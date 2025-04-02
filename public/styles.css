@@ -1,0 +1,2471 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f8f9fa;
+}
+
+h2 {
+    color: white;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* Header Styles */
+header {
+    background-color: #005f87;
+    color: white;
+    padding: 1rem 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.header-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.logo {
+    margin-bottom: 1rem;
+}
+
+.logo-text {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.logo-text span {
+    color: #4dccbd;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0 1rem;
+    box-sizing: border-box;
+}
+
+.nav-items {
+    display: flex;
+    list-style: none;
+    align-items: center;
+    font-size: 1.2rem;
+    padding: 0;
+    flex-grow: 1;
+    margin: 0 0rem;
+}
+
+.nav-items li {
+    margin: 0 2rem;
+    position: relative;
+}
+
+.nav-items li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.nav-items li a:hover {
+    color: #4dccbd;
+}
+
+.nav-login {
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+
+.nav-login li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-login li a:hover {
+    color: #005147;
+}
+
+/* Dropdown Menu Styles */
+.dropdown {
+    display: none;
+    position: absolute;
+    background-color: #005f87;
+    padding: 0.5rem 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+.nav-items li:hover .dropdown {
+    display: block;
+}
+
+.dropdown li {
+    width: 200px;
+    border-radius: 50px;
+}
+
+.dropdown li a {
+    display: block;
+    padding: 0.5rem 1rem;
+    color: white;
+    text-decoration: none;
+    transition: background-color 0.3s;
+    border-radius: 50px;
+}
+
+.dropdown li a:hover {
+    background-color: #004f70;
+    border-radius: 50px;
+}
+
+/* Logout Button Styles */
+.logout-form {
+    margin: 0;
+}
+
+.logout-button {
+    display: inline-block;
+    background-color: #4dccbd;
+    color: white;
+    padding: 0.8rem 1.8rem;
+    border-radius: 50px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-left: 1rem;
+}
+
+.logout-button:hover {
+    background-color: #3ab7a8;
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(rgba(0, 95, 135, 0.8), rgba(0, 95, 135, 0.8)), url('/images/hero-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 5rem 0;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 0 auto 2rem;
+}
+
+.btn {
+    display: inline-block;
+    background-color: #4dccbd;
+    color: white;
+    padding: 0.8rem 1.8rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    margin: 0 0.5rem;
+}
+
+.btn:hover {
+    background-color: #3ab7a8;
+}
+
+.btn-outline {
+    background-color: transparent;
+    border: 2px solid white;
+}
+
+.btn-outline:hover {
+    background-color: rgba(255,255,255,0.1);
+}
+
+/* Features Section */
+.features {
+    padding: 4rem 0;
+    background: linear-gradient(135deg, #e0f7fa, #ffffff); /* Gradient background */
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.section-title h2 {
+    font-size: 2rem;
+    color: rgb(81, 81, 81);
+    margin-bottom: 1rem;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.feature-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+}
+
+.feature-icon {
+    font-size: 2.5rem;
+    color: #4dccbd;
+    margin-bottom: 1rem;
+}
+
+/* Testimonials */
+.testimonials {
+    background-color: #e9f7fe;
+    padding: 4rem 0;
+}
+
+.testimonial-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    margin: 1rem;
+}
+
+/* Footer */
+footer {
+    background-color: #003d5b;
+    color: white;
+    padding: 3rem 0 1rem;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.footer-column h3 {
+    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
+}
+
+.footer-column ul {
+    list-style: none;
+}
+
+.footer-column ul li {
+    margin-bottom: 0.8rem;
+}
+
+.footer-column ul li a {
+    color: #b3e0ff;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-column ul li a:hover {
+    color: white;
+}
+
+.copyright {
+    text-align: center;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .logo {
+        margin-bottom: 1rem;
+        justify-content: center;
+    }
+    
+    nav {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .nav-items, .nav-login {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .nav-items li, .nav-login li {
+        margin: 0.5rem 0;
+    }
+    
+    .hero h1 {
+        font-size: 2rem;
+    }
+    
+    .btn {
+        display: block;
+        margin: 0.5rem auto;
+        max-width: 200px;
+    }
+
+    .dropdown {
+        position: static;
+        width: 100%;
+    }
+}
+/* Login Container Styles */
+.login-container {
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    margin: 3rem auto;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.login-container h1 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: #005f87;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* General Alert Styles */
+.alert {
+    padding: 1rem 1.5rem;
+    margin-bottom: 1.5rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.alert::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5px;
+    height: 100%;
+    background-color: inherit;
+}
+
+.alert:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Danger Alert Styles */
+.alert-danger {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.alert-danger::before {
+    background-color: #f5c6cb;
+}
+
+/* Success Alert Styles */
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.alert-success::before {
+    background-color: #c3e6cb;
+}
+
+/* Icon Styles */
+.alert-icon {
+    margin-right: 0.5rem;
+    font-size: 1.2rem;
+    display: inline-block;
+    vertical-align: middle;
+}
+.login-container:hover {
+    
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+}
+
+.login-container form {
+    display: flex;
+    flex-direction: column;
+}
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.form-group input {
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-group input:focus {
+    border-color: #4dccbd;
+    box-shadow: 0 0 5px rgba(77, 204, 189, 0.5);
+    outline: none;
+}
+
+.login-container label {
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.login-container input {
+    padding: 0.75rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.login-container input:focus {
+    border-color: #4dccbd;
+    box-shadow: 0 0 5px rgba(77, 204, 189, 0.5);
+    outline: none;
+}
+
+.login-container button {
+    background-color: #4dccbd;
+    color: white;
+    padding: 0.8rem;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.login-container button:hover {
+    background-color: #3ab7a8;
+    transform: translateY(-2px);
+}
+
+.login-container a {
+    margin-top: 1rem;
+    text-align: center;
+    color: #005f87;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s;
+}
+
+.login-container a:hover {
+    color: #003d5b;
+}
+
+
+ /* Register Container Styles */
+ .register-container {
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    margin: 3rem auto;
+    text-align: center;
+}
+
+.register-container h1 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: #005f87;
+    font-weight: bold;
+}
+
+.register-container form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.register-container label {
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.register-container input {
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    width: 100%;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.register-container input:focus {
+    border-color: #4dccbd;
+    box-shadow: 0 0 5px rgba(77, 204, 189, 0.5);
+    outline: none;
+}
+
+.register-container button {
+    background-color: #4dccbd;
+    color: white;
+    padding: 0.8rem;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%;
+}
+
+.register-container button:hover {
+    background-color: #3ab7a8;
+}
+
+.register-container a {
+    color: #005f87;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s;
+}
+
+.register-container a:hover {
+    color: #003d5b;
+}
+
+.alert {
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.alert-danger {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.error {
+    color: red;
+    font-size: 0.8rem;
+    margin-top: -0.5rem;
+    margin-bottom: 1rem;
+}
+
+/* Dashboard Container Styles */
+
+.dashboard-container {
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    max-width: 1200px;
+    margin: 3rem auto;
+    text-align: center;
+    margin-bottom: 4rem; /* Add space between the container and the footer */
+}
+
+.dashboard-container h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: #005f87;
+    font-weight: bold;
+}
+
+.user-role {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    color: #333;
+}
+.user-name {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    color: #333;
+}
+.dashboard-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 2rem;
+}
+
+.dashboard-card {
+    background-color: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    flex: 1 1 calc(33% - 2rem);
+    max-width: calc(33% - 2rem);
+    text-align: left;
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 300px; /* Set a fixed height for all cards */
+}
+
+.dashboard-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+.dashboard-card h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #005f87;
+}
+
+.dashboard-card p {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    color: #555;
+    flex-grow: 1; /* Allow the paragraph to take up remaining space */
+}
+
+.dashboard-card .btn {
+    display: inline-block;
+    background-color: #4dccbd;
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    align-self: flex-start; /* Align the button to the start of the flex container */
+}
+
+.dashboard-card .btn:hover {
+    background-color: #3ab7a8;
+}
+
+
+/* Appointments Container Styles */
+.appointments-container {
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    max-width: 1200px;
+    margin: 3rem auto;
+    text-align: center;
+    margin-bottom: 4rem; /* Add space between the container and the footer */
+}
+
+.appointments-container h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: #005f87;
+    font-weight: bold;
+}
+
+.appointments-container table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 2rem;
+}
+
+.appointments-container th, .appointments-container td {
+    padding: 1rem;
+    border: 1px solid #ddd;
+    text-align: left;
+    color: #333;
+}
+
+.appointments-container th {
+    background-color: #f8f9fa;
+    color: #005f87;
+    font-weight: bold;
+}
+
+.appointments-container tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.appointments-container a {
+    display: inline-block;
+    background-color: #4dccbd;
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.appointments-container a:hover {
+    background-color: #3ab7a8;
+}
+
+
+/* Booking Container Styles */
+.booking-container {
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 3rem auto;
+    text-align: center; /* Align text to the left for a more traditional form layout */
+    margin-bottom: 4rem; /* Add space between the container and the footer */
+}
+
+.booking-container h1, .booking-container h2 {
+    color: #005f87;
+    font-weight: bold;
+    text-align: center; /* Center align headings */
+}
+
+.booking-container h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.booking-container h2 {
+    font-size: 1.8rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.booking-container form {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Align items to the left */
+}
+
+.booking-container label {
+    font-weight: bold;
+    margin-top: 1rem;
+    color: #333;
+    text-align: left;
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 0.5rem;
+}
+
+.booking-container select,
+.booking-container input[type="text"],
+.booking-container textarea {
+    padding: 0.5rem;
+    margin-top: 0.5rem;
+    border: 1px solid #4dccbd; /* Use main color for border */
+    border-radius: 5px;
+    width: 100%;
+    max-width: 400px;
+    font-size: 1rem;
+    box-sizing: border-box;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    background-color: #fff;
+}
+
+.booking-container select:focus,
+.booking-container input[type="text"]:focus,
+.booking-container textarea:focus {
+    border-color: #3ab7a8; /* Darker shade for focus */
+    box-shadow: 0 0 5px rgba(58, 183, 168, 0.5);
+    outline: none;
+}
+
+.booking-container button {
+    background-color: #4dccbd;
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border-radius: 5px;
+    border: none;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 2rem;
+    align-self: center; /* Center the button */
+}
+
+.booking-container button:hover {
+    background-color: #3ab7a8;
+}
+
+.booking-container a {
+    display: inline-block;
+    margin-top: 2rem;
+    color: #005f87;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.booking-container a:hover {
+    color: #003d5b;
+}
+
+/* Time Slots List */
+#timeSlotsList {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 1rem;
+}
+
+.time-slot {
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: #f8f9fa;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.time-slot:hover {
+    background-color: #e0f7fa;
+    border-color: #80deea;
+}
+
+.time-slot.selected {
+    background-color: #00796b; /* Teal color */
+    color: white;
+    border-color: #004d40; /* Darker teal for border */
+}
+
+
+
+/* Send Message Container Styles */
+.sendmessage-container {
+    max-width: 1200px;
+    margin: 3rem auto;
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+}
+
+/* Heading Styles */
+.sendmessage-container h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: #005f87;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Table Styles */
+.sendmessage-container .table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 2rem;
+}
+
+.sendmessage-container .table th, 
+.sendmessage-container .table td {
+    padding: 1rem;
+    border: 1px solid #ddd;
+    text-align: left;
+    color: #333;
+}
+
+.sendmessage-container .table th {
+    background-color: #f8f9fa;
+    color: #005f87;
+    font-weight: bold;
+}
+
+.sendmessage-container .table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Form Styles */
+.sendmessage-container .input-group {
+    display: flex;
+    align-items: center;
+}
+
+.sendmessage-container .form-control {
+    flex: 1;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.sendmessage-container .form-control:focus {
+    border-color: #4dccbd;
+    box-shadow: 0 0 5px rgba(77, 204, 189, 0.5);
+    outline: none;
+}
+
+.sendmessage-container .input-group-append {
+    margin-left: 0.5rem;
+}
+
+.sendmessage-container .btn {
+    background-color: #4dccbd;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.sendmessage-container .btn:hover {
+    background-color: #3ab7a8;
+}
+
+
+
+/* Lab Reports Container Styles */
+.labreports-container {
+    max-width: 1200px;
+    margin: 3rem auto;
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+}
+
+/* Heading Styles */
+.labreports-container h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: #005f87;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Table Styles */
+.labreports-container table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 2rem;
+}
+
+.labreports-container th, 
+.labreports-container td {
+    padding: 1rem;
+    border: 1px solid #ddd;
+    text-align: left;
+    color: #333;
+}
+
+.labreports-container th {
+    background-color: #f8f9fa;
+    color: #005f87;
+    font-weight: bold;
+}
+
+.labreports-container tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Notification Container Styles */
+
+
+.notification-container {
+    width: 95%; /* Increased width to 95% */
+    max-width: 1400px; /* Increased max-width to 1400px */
+    margin: 3rem auto; /* Center the container */
+    background-color: #ffffff; /* White background */
+    padding: 2.5rem; /* Increased padding for more space inside */
+    border-radius: 10px; /* Rounded corners */
+    border: 1px solid #ddd; /* Subtle border */
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15); /* Shadow for depth */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Consistent font */
+    color: #333; /* Text color */
+}
+
+/* Heading Styles */
+.notification-container h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: #005f87;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Table Styles */
+.custom-notification-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 2rem;
+}
+
+.custom-notification-table th, 
+.custom-notification-table td {
+    padding: 1rem;
+    border: 1px solid #ddd;
+    text-align: left;
+    color: #333;
+}
+
+.custom-notification-table th {
+    background-color: #f8f9fa;
+    color: #005f87;
+    font-weight: bold;
+}
+
+.custom-notification-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Button Styles */
+.view-details-button {
+    background-color: #4dccbd;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    display: inline-block;
+    text-align: center;
+}
+
+.view-details-button:hover {
+    background-color: #3ab7a8;
+}
+
+.view-details-button button {
+    background-color: transparent;
+    border: none;
+    color: inherit;
+    cursor: pointer;
+    font-weight: inherit;
+    padding: 0;
+}
+
+/* View Detail Container Styles */
+.viewdetail-container {
+    width: 80%; /* Set the container to 80% of the screen width */
+    max-width: 1200px; /* Maintain a maximum width for larger screens */
+    margin: 3rem auto;
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 10px;
+    border: 1px solid #ddd; /* Add a subtle border */
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15); /* Enhance the shadow for more depth */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+}
+
+/* Heading Styles */
+.viewdetail-container h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: #005f87;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Table Styles */
+.notification-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 2rem;
+}
+
+.notification-table th, 
+.notification-table td {
+    padding: 1rem;
+    border: 1px solid #ddd;
+    text-align: left;
+    color: #333;
+}
+
+.notification-table th {
+    background-color: #f8f9fa;
+    color: #005f87;
+    font-weight: bold;
+}
+
+.notification-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Manage Patients Container Styles */
+.manage-patients-container {
+    width: 80%; /* Set the container to 80% of the screen width */
+    max-width: 1200px; /* Maintain a maximum width for larger screens */
+    margin: 3rem auto;
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 10px;
+    border: 1px solid #ddd; /* Add a subtle border */
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15); /* Enhance the shadow for more depth */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+}
+
+/* Heading Styles */
+.manage-patients-container h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: #005f87;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Table Styles */
+.patients-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 2rem;
+}
+
+.patients-table th, 
+.patients-table td {
+    padding: 1rem;
+    border: 1px solid #ddd;
+    text-align: left;
+    color: #333;
+}
+
+.patients-table th {
+    background-color: #f8f9fa;
+    color: #005f87;
+    font-weight: bold;
+}
+
+.patients-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Link Styles */
+.patients-table a {
+    color: #4dccbd;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.patients-table a:hover {
+    color: #3ab7a8;
+}
+/* Link Styles */
+.view-details-link {
+    color: #4dccbd;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.view-details-link:hover {
+    color: #3ab7a8;
+}
+
+
+/* Patient Details Container Styles */
+.patient-details-container {
+    width: 80%;
+    max-width: 1200px;
+    margin: 3rem auto;
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+}
+
+/* Heading Styles */
+.patient-details-container h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: #005f87;
+    font-weight: bold;
+    text-align: center;
+}
+
+.patient-details-container h2 {
+    font-size: 1.8rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    color: #005f87;
+    font-weight: bold;
+    border-bottom: 2px solid #4dccbd;
+    padding-bottom: 0.5rem;
+}
+
+/* Table Styles */
+.patient-info table, .patient-lab-reports table, .patient-appointments table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1rem;
+}
+
+.patient-info th, .patient-lab-reports th, .patient-appointments th {
+    text-align: left;
+    padding: 0.5rem;
+    background-color: #f8f9fa;
+    color: #005f87;
+    font-weight: bold;
+}
+
+.patient-info td, .patient-lab-reports td, .patient-appointments td {
+    padding: 0.5rem;
+    border-bottom: 1px solid #ddd;
+    color: #555;
+}
+
+.patient-info tr:last-child td, .patient-lab-reports tr:last-child td, .patient-appointments tr:last-child td {
+    border-bottom: none;
+}
+
+/* Back Link Styles */
+.back-link a {
+    display: inline-block;
+    margin-top: 2rem;
+    color: #005f87;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.back-link a:hover {
+    color: #003d5b;
+    background-color: #e0e0e0;
+}
+
+/* View Report Container Styles */
+.view-report-container {
+    width: 80%; /* Set the container to 80% of the screen width */
+    max-width: 1200px; /* Maintain a maximum width for larger screens */
+    margin: 3rem auto;
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 10px;
+    border: 1px solid #ddd; /* Add a subtle border */
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15); /* Enhance the shadow for more depth */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+}
+
+/* Heading Styles */
+.view-report-container h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: #005f87;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Table Styles */
+.reports-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 2rem;
+}
+
+.reports-table th, 
+.reports-table td {
+    padding: 1rem;
+    border: 1px solid #ddd;
+    text-align: left;
+    color: #333;
+}
+
+.reports-table th {
+    background-color: #f8f9fa;
+    color: #005f87;
+    font-weight: bold;
+}
+
+.reports-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+
+/* Upload Report Container Styles */
+.upload-report-container {
+    max-width: 800px;
+    margin: 3rem auto;
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+    text-align: center;
+}
+
+.upload-report-container h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: #005f87;
+    font-weight: bold;
+}
+
+.upload-report-container form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.upload-report-container label {
+    font-weight: bold;
+    margin-top: 1rem;
+    color: #333;
+    text-align: left;
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 0.5rem;
+}
+
+.upload-report-container select,
+.upload-report-container input[type="file"],
+.upload-report-container textarea {
+    padding: 0.5rem;
+    margin-top: 0.5rem;
+    border: 1px solid #4dccbd;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 400px;
+    font-size: 1rem;
+    box-sizing: border-box;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    background-color: #fff;
+}
+
+.upload-report-container select:focus,
+.upload-report-container input[type="file"]:focus,
+.upload-report-container textarea:focus {
+    border-color: #3ab7a8;
+    box-shadow: 0 0 5px rgba(58, 183, 168, 0.5);
+    outline: none;
+}
+
+.upload-report-container button {
+    background-color: #4dccbd;
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border-radius: 5px;
+    border: none;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 2rem;
+    align-self: center;
+}
+
+.upload-report-container button:hover {
+    background-color: #3ab7a8;
+}
+
+.upload-report-container .success {
+    color: green;
+    margin-bottom: 10px;
+}
+
+.upload-report-container .error {
+    color: red;
+    margin-bottom: 10px;
+}
+.file-upload-wrapper {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    max-width: 400px;
+    margin-top: 1rem;
+    border: 2px dashed #4dccbd; /* Dashed border for the wrapper */
+    border-radius: 5px;
+    padding: 10px;
+    background-color: #f8f9fa;
+    text-align: center;
+    transition: border-color 0.3s;
+}
+
+.file-upload-wrapper:hover {
+    border-color: #3ab7a8; /* Change border color on hover */
+}
+
+.file-upload-label {
+    display: inline-block;
+    background-color: #4dccbd;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.file-upload-label:hover {
+    background-color: #3ab7a8;
+}
+
+.file-upload-input {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.file-name {
+    display: block;
+    margin-top: 10px;
+    font-style: italic;
+    color: #555;
+}
+
+.hidden {
+    display: none;
+}
+
+
+/* View Appointment Container Styles */
+.view-appointment-container {
+    width: 80%; /* Set the container to 80% of the screen width */
+    max-width: 1200px; /* Maintain a maximum width for larger screens */
+    margin: 3rem auto; /* Center the container with margin */
+    background-color: #ffffff; /* White background for the container */
+    padding: 2rem; /* Padding inside the container */
+    border-radius: 10px; /* Rounded corners */
+    border: 1px solid #ddd; /* Subtle border for definition */
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15); /* Shadow for depth */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Consistent font */
+    color: #333; /* Text color */
+}
+
+/* Heading Styles */
+.view-appointment-container h1 {
+    font-size: 2.5rem; /* Large font size for the main heading */
+    margin-bottom: 1.5rem; /* Space below the heading */
+    color: #005f87; /* Primary color for the heading */
+    font-weight: bold; /* Bold text */
+    text-align: center; /* Center the heading */
+}
+
+/* Table Styles */
+.view-appointment-container table {
+    width: 100%; /* Full width table */
+    border-collapse: collapse; /* Collapse borders for a clean look */
+    margin-bottom: 1rem; /* Space below the table */
+}
+
+.view-appointment-container th, .view-appointment-container td {
+    padding: 12px; /* Padding for table cells */
+    border: 1px solid #dddddd; /* Border for table cells */
+    text-align: left; /* Left align text */
+}
+
+.view-appointment-container th {
+    background-color: #005f87; /* Primary color for table headers */
+    color: white; /* White text for contrast */
+    font-weight: bold; /* Bold text */
+}
+
+.view-appointment-container tr:nth-child(even) {
+    background-color: #f9f9f9; /* Light gray for even rows */
+}
+
+.view-appointment-container tr:hover {
+    background-color: #e0f7fa; /* Light teal for hover effect */
+}
+
+/* Paragraph Styles */
+.view-appointment-container p {
+    font-size: 18px; /* Font size for paragraphs */
+    color: #555; /* Text color */
+    text-align: center; /* Center align the text */
+    margin-top: 20px; /* Space above the paragraph */
+}
+/* Specialist Availability Container Styles */
+.specialist-availability-container {
+    width: 80%;
+    max-width: 1200px;
+    margin: 3rem auto;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center the containers horizontally */
+}
+
+/* Your Availability Container Styles */
+.your-availability-container {
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+    margin-bottom: 2rem;
+    width: 100%; /* Ensure full width within the parent container */
+    max-width: 600px; /* Optional: Set a max width for better control */
+    text-align: center; /* Center text within the container */
+}
+/* Current Availability Container Styles */
+.current-availability-container {
+    background-color: #f9f9f9;
+    padding: 2rem;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 100%; /* Ensure full width within the parent container */
+    max-width: 600px; /* Optional: Set a max width for better control */
+    text-align: center; /* Center text within the container */
+}
+
+
+/* Heading Styles */
+.specialist-availability-container h1, .specialist-availability-container h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: #005f87;
+    font-weight: bold;
+    text-align: center;
+}
+
+.specialist-availability-container h2 {
+    font-size: 2rem;
+    margin-top: 2rem;
+}
+
+/* Form Styles */
+.availability-form {
+    margin-bottom: 2rem;
+}
+
+.availability-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: #333;
+    align-items: center;
+}
+
+.availability-form input[type="text"],
+.availability-form select {
+    width: 100%;
+    max-width: 400px;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.availability-form input[type="text"]:focus,
+.availability-form select:focus {
+    border-color: #4dccbd;
+    box-shadow: 0 0 5px rgba(77, 204, 189, 0.5);
+    outline: none;
+}
+
+.availability-form button {
+    background-color: #4dccbd;
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border-radius: 5px;
+    border: none;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.availability-form button:hover {
+    background-color: #3ab7a8;
+}
+
+
+/* Availability List Styles */
+.availability-list {
+    list-style: none;
+    padding: 0;
+}
+
+.availability-list li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #ddd;
+    color: #555;
+}
+
+.availability-list li:last-child {
+    border-bottom: none;
+}
+/* Manage Appointments Container Styles */
+.manage-appointments-container {
+    width: 90%; /* Increased width to 90% */
+    max-width: 1400px; /* Increased max-width to 1400px */
+    margin: 3rem auto;
+    background-color: #ffffff;
+    padding: 2.5rem; /* Increased padding for more space inside */
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+}
+
+/* Table Styles */
+.manage-appointments-container table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 2rem;
+}
+
+.manage-appointments-container th, 
+.manage-appointments-container td {
+    padding: 1rem;
+    border: 1px solid #ddd;
+    text-align: left;
+    color: #333;
+}
+
+.manage-appointments-container th {
+    background-color: #f8f9fa;
+    color: #005f87;
+    font-weight: bold;
+}
+
+.manage-appointments-container tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.manage-appointments-container button {
+    background-color: #4dccbd;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.manage-appointments-container button:hover {
+    background-color: #3ab7a8;
+}
+/* Select Styles */
+.manage-appointments-container select {
+    width: 100%; /* Make the select element take the full width */
+    padding: 0.5rem; /* Add padding for better spacing */
+    border: 1px solid #ddd; /* Match the border style */
+    border-radius: 5px; /* Match the border radius */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Use the same font */
+    color: #333; /* Text color */
+    background-color: #ffffff; /* Background color */
+    transition: border-color 0.3s; /* Smooth transition for border color */
+}
+
+/* Change border color on focus */
+.manage-appointments-container select:focus {
+    border-color: #4dccbd; /* Change border color on focus */
+    outline: none; /* Remove default outline */
+}
+
+/* Style for the option elements */
+.manage-appointments-container select option {
+    padding: 0.5rem; /* Add padding for options */
+    background-color: #ffffff; /* Background color for options */
+    color: #333; /* Text color for options */
+}
+
+/* View Lab Report Container Styles */
+.view-lab-report-container {
+    width: 90%; /* Set the container to 90% of the screen width */
+    max-width: 1200px; /* Maintain a maximum width for larger screens */
+    margin: 3rem auto; /* Center the container with margin */
+    background-color: #ffffff; /* White background for the container */
+    padding: 2rem; /* Padding inside the container */
+    border-radius: 10px; /* Rounded corners */
+    border: 1px solid #ddd; /* Subtle border for definition */
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15); /* Shadow for depth */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Consistent font */
+    color: #333; /* Text color */
+}
+
+/* Heading Styles */
+.view-lab-report-container h1 {
+    font-size: 2.5rem; /* Large font size for the main heading */
+    margin-bottom: 1.5rem; /* Space below the heading */
+    color: #005f87; /* Primary color for the heading */
+    font-weight: bold; /* Bold text */
+    text-align: center; /* Center the heading */
+}
+
+/* Table Styles */
+.view-lab-report-container table {
+    width: 100%; /* Full width table */
+    border-collapse: collapse; /* Collapse borders for a clean look */
+    margin-bottom: 1rem; /* Space below the table */
+}
+
+.view-lab-report-container th, .view-lab-report-container td {
+    padding: 12px; /* Padding for table cells */
+    border: 1px solid #dddddd; /* Border for table cells */
+    text-align: left; /* Left align text */
+}
+
+.view-lab-report-container th {
+    background-color: #f8f9fa; /* Primary color for table headers */
+    color: #005f87; /* White text for contrast */
+    font-weight: bold; /* Bold text */
+}
+
+.view-lab-report-container tr:nth-child(even) {
+    background-color: #f9f9f9; /* Light gray for even rows */
+}
+
+.view-lab-report-container tr:hover {
+    background-color: #e0f7fa; /* Light teal for hover effect */
+}
+
+/* Link Styles */
+.view-details-button {
+    background-color: #4dccbd; /* Button background color */
+    color: white; /* Button text color */
+    padding: 0.5rem 1rem; /* Button padding */
+    border-radius: 5px; /* Rounded corners */
+    text-decoration: none; /* Remove underline */
+    font-weight: bold; /* Bold text */
+    transition: background-color 0.3s; /* Smooth transition */
+}
+
+.view-details-button:hover {
+    background-color: #3ab7a8; /* Darker shade on hover */
+}
+
+.view-patients-container {
+    width: 90%; /* Set the container to 90% of the screen width */
+    max-width: 800px; /* Maintain a maximum width for larger screens */
+    margin: 3rem auto; /* Center the container */
+    background-color: #ffffff; /* White background */
+    padding: 2rem; /* Padding inside the container */
+    border-radius: 10px; /* Rounded corners */
+    border: 1px solid #ddd; /* Subtle border */
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15); /* Shadow for depth */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Consistent font */
+    color: #333; /* Text color */
+}
+
+/* Table Styles */
+.patients-table {
+    width: 100%; /* Full width table */
+    border-collapse: collapse; /* Collapse borders for a clean look */
+    margin-top: 2rem; /* Space above the table */
+}
+
+.patients-table th, .patients-table td {
+    padding: 12px; /* Padding for table cells */
+    border: 1px solid #dddddd; /* Border for table cells */
+    text-align: left; /* Left align text */
+}
+
+.patients-table th {
+    background-color: #f8f9fa; /* Primary color for table headers */
+    color: #005f87; /* White text for contrast */
+    font-weight: bold; /* Bold text */
+}
+
+.patients-table tr:nth-child(even) {
+    background-color: #f9f9f9; /* Light gray for even rows */
+}
+
+.patients-table tr:hover {
+    background-color: #e0f7fa; /* Light teal for hover effect */
+}
+
+/* User Management Container Styles */
+.userdetail-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 3rem auto;
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+}
+
+/* Heading Styles */
+.userdetail-container h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: #005f87;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Alert Styles */
+.userdetail-container .alert {
+    padding: 1rem 1.5rem;
+    margin-bottom: 1.5rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.userdetail-container .alert::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5px;
+    height: 100%;
+    background-color: inherit;
+}
+
+.userdetail-container .alert:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.userdetail-container .alert-success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.userdetail-container .alert-success::before {
+    background-color: #c3e6cb;
+}
+
+.userdetail-container .alert-danger {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.userdetail-container .alert-danger::before {
+    background-color: #f5c6cb;
+}
+
+.userdetail-container .alert-icon {
+    margin-right: 0.5rem;
+    font-size: 1.2rem;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* Table Styles */
+.userdetail-container table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 2rem;
+}
+
+.userdetail-container th, .userdetail-container td {
+    padding: 1rem;
+    border: 1px solid #ddd;
+    text-align: left;
+    color: #333;
+}
+
+.userdetail-container th {
+    background-color: #f8f9fa;
+    color: #005f87;
+    font-weight: bold;
+}
+
+.userdetail-container tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.userdetail-container tr:hover {
+    background-color: #e0f7fa;
+}
+
+/* Action Buttons Styles */
+.userdetail-container .action-buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+.userdetail-container .action-buttons a,
+.userdetail-container .action-buttons .delete-form button {
+    background-color: #4dccbd;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    border: none;
+    cursor: pointer;
+    /* Ensure uniform size */
+    min-width: 60px;
+    text-align: center;
+}
+
+.userdetail-container .action-buttons a:hover,
+.userdetail-container .action-buttons .delete-form button:hover {
+    background-color: #3ab7a8;
+}
+
+/* Delete Form Styles */
+.userdetail-container .delete-form {
+    display: inline;
+    margin: 0; /* Remove any default margin */
+}
+
+.userdetail-container .delete-form button {
+    background: none; /* Remove default button background */
+    padding: 0; /* Remove default padding */
+    border: none; /* Remove default border */
+    color: inherit; /* Inherit text color from parent */
+    font: inherit; /* Inherit font properties from parent */
+    cursor: pointer; /* Ensure pointer cursor on hover */
+}
+
+/* Edit User Container Styles */
+.edit-user-container {
+    width: 90%;
+    max-width: 600px; /* Adjust as needed for form width */
+    margin: 3rem auto;
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+}
+
+/* Heading Styles */
+.edit-user-container h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: #005f87;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Form Group Styles */
+.edit-user-container .form-group {
+    margin-bottom: 1.5rem;
+    width: 100%;
+}
+
+.edit-user-container .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.edit-user-container .form-group input,
+.edit-user-container .form-group select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.edit-user-container .form-group input:focus,
+.edit-user-container .form-group select:focus {
+    border-color: #4dccbd;
+    box-shadow: 0 0 5px rgba(77, 204, 189, 0.5);
+    outline: none;
+}
+
+/* Button Styles */
+.edit-user-container .btn {
+    display: inline-block;
+    background-color: #4dccbd;
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    border: none;
+    cursor: pointer;
+}
+
+.edit-user-container .btn-primary {
+    background-color: #4dccbd;
+}
+
+.edit-user-container .btn-primary:hover {
+    background-color: #3ab7a8;
+}
+
+.edit-user-container .btn-secondary {
+    background-color: #005f87;
+}
+
+.edit-user-container .btn-secondary:hover {
+    background-color: #004f70;
+}
+
+/* Alert Styles */
+.edit-user-container .alert {
+    padding: 1rem 1.5rem;
+    margin-bottom: 1.5rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.edit-user-container .alert::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5px;
+    height: 100%;
+    background-color: inherit;
+}
+
+.edit-user-container .alert:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+
+
+/* About Us Container Styles */
+.about-container {
+    max-width: 1200px;
+    margin: 3rem auto;
+    padding: 2rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+    text-align: center;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.about-section, .vision-section, .team-section {
+    margin-bottom: 3rem;
+    padding: 2rem;
+    background: linear-gradient(135deg, #e0f7fa, #ffffff); /* Gradient background */
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    animation: slideIn 1s ease-in-out;
+    position: relative;
+    overflow: hidden;
+}
+
+.about-section h1, .vision-section h2, .team-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #005f87;
+    font-weight: bold;
+    animation: textSlideIn 1s ease-in-out;
+}
+
+.about-section p, .vision-section p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: #555;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+.team-grid {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+.team-member {
+    background-color: #f8f9fa;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+    width: 250px;
+    animation: fadeInUp 1s ease-in-out;
+}
+
+.team-member:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+}
+
+.team-member img {
+    width: 150px; /* Set a fixed width */
+    height: 150px; /* Set a fixed height */
+    object-fit: cover; /* Maintain aspect ratio and cover the area */
+    border-radius: 50%;
+    margin-bottom: 1rem;
+}
+
+.team-member h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: #005f87;
+}
+
+.team-member p {
+    font-size: 1rem;
+    color: #555;
+}
+
+/* Keyframes for Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes textSlideIn {
+    from {
+        transform: translateX(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+@media (max-width: 600px) {
+    .team-member img {
+        width: 100px; /* Smaller size for mobile */
+        height: 100px;
+    }
+}
+
+
+/* Services Container Styles */
+.services-container {
+    max-width: 1200px;
+    margin: 3rem auto;
+    background-color: #ffffff;
+    padding: 3rem;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+    text-align: center;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.services-container h1 {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+    color: #005f87;
+    font-weight: bold;
+    animation: slideIn 1s ease-in-out;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+.service-card {
+    background: linear-gradient(135deg, #e0f7fa, #ffffff);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+    animation: fadeInUp 1s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+}
+
+.service-card h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: #005f87;
+    font-weight: bold;
+}
+
+.service-card p {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    color: #555;
+    flex-grow: 1;
+}
+
+.service-card .btn {
+    display: inline-block;
+    background-color: #4dccbd;
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    align-self: center;
+}
+
+.service-card .btn:hover {
+    background-color: #3ab7a8;
+}
+
+/* Keyframes for Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+
+
+/* Contact Us Container Styles */
+.contact-container {
+    max-width: 800px;
+    margin: 3rem auto;
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+    text-align: center;
+}
+
+.contact-container h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: #005f87;
+    font-weight: bold;
+}
+
+.contact-form .form-group {
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+.contact-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.contact-form .form-control {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.contact-form .form-control:focus {
+    border-color: #4dccbd;
+    box-shadow: 0 0 5px rgba(77, 204, 189, 0.5);
+    outline: none;
+}
+
+.contact-form .btn {
+    background-color: #4dccbd;
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border-radius: 5px;
+    border: none;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.contact-form .btn:hover {
+    background-color: #3ab7a8;
+}
+
+.contact-container ul {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0;
+    text-align: left;
+}
+
+.contact-container ul li {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: #555;
+}
+/* Admin Messages Container Styles */
+.admin-messages-container {
+    max-width: 1000px;
+    margin: 3rem auto;
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+    text-align: center;
+}
+
+.admin-messages-container h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: #005f87;
+    font-weight: bold;
+}
+
+.messages-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 2rem;
+}
+
+.messages-table th, .messages-table td {
+    padding: 1rem;
+    border: 1px solid #ddd;
+    text-align: left;
+    color: #333;
+}
+
+.messages-table th {
+    background-color: #f8f9fa;
+    color: #005f87;
+    font-weight: bold;
+}
+
+.messages-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.messages-table tr:hover {
+    background-color: #e0f7fa;
+}

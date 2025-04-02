@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles.css">
+    <title>Specialist Notifications</title>
+</head>
+
+<body>
+    <% if (!role) { %>
+        <%- include('home-navbar') %>
+            <% } else { %>
+                <%- include(role==='Admin' ? 'admin-navbar' : role==='Specialist' ? 'specialist-navbar'
+                    : 'patient-navbar' ) %>
+                    <% } %>
+                        <% if (successMessage && successMessage.length> 0) { %>
+                            <div class="alert alert-success">
+                                <span class="alert-icon">✔️</span>
+                                <%= successMessage %> <!-- Display success message -->
+                            </div>
+                            <% } %>
+
+                                <% if (errorMessage && errorMessage.length> 0) { %>
+                                    <div class="alert alert-danger">
+                                        <span class="alert-icon">❌</span>
+                                        <%= errorMessage%> <!-- Display error message -->
+                                    </div>
+                                    <% } %>
+
+                                        <div class="notification-container">
+                                            <h1>Your Notifications</h1>
+
+                                            <div class="notification-table-container">
+                                                <% if (notifications.length===0) { %>
+                                                    <p>No notifications available</p>
+                                                    <% } else { %>
+                                                        <table class="custom-notification-table">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>Message</th>
+                                                                    <th>Type</th>
+                                                                    <th>Status</th>
+
+                                                                    <th colspan="2">Actions</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <% notifications.forEach(notification=> { %>
+                                                                    <tr>
+                                                                        <td>
+                                                                            <%= notification.notification_message %>
+                                                                        </td>
+                                                                        <td>
+                                                                            <%= notification.notification_type %>
+                                                                        </td>
+
+                                                                        <td>
+                                                                            <%= notification.createdAt.toLocaleString()
+                                                                                %>
+                                                                        </td>
+                                                                        <td>
+                                                                            <a href="/notifications/<%= notification._id %>"
+                                                                                class="view-details-button">View
+                                                                                Details</a>
+                                                                        </td>
+                                                                        <td>
+                                                                            <form
+                                                                                action="/specialist/notifications/delete/<%= notification._id %>"
+                                                                                method="POST"
+                                                                                class="view-details-button">
+                                                                                <button type="submit">Delete</button>
+                                                                            </form>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <% }); %>
+                                                            </tbody>
+                                                        </table>
+                                                        <% } %>
+                                            </div>
+                                        </div>
+                                        <%- include('footer') %>
+</body>
+
+</html>

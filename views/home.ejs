@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles.css"> 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+    <title>CareConnect | Healthcare Portal</title>
+    <style>
+        /* Team Section Styles */
+.team {
+    padding: 4rem 0;
+    background-color: #f8f9fa; /* Optional: Set a background color for the team section */
+}
+
+.team-grid {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+.team-member {
+    background: linear-gradient(135deg, #e0f7fa, #ffffff); /* Match the service card gradient */
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+    width: 250px;
+    animation: fadeInUp 1s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.team-member:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+}
+
+.team-member img {
+    width: 100%;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+}
+
+.team-member h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: #005f87;
+    font-weight: bold;
+}
+
+.team-member p {
+    font-size: 1rem;
+    color: #555;
+}
+
+/* Keyframes for Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+    </style>
+</head>
+<body>
+    <% if (!role) { %>
+        <%- include('home-navbar') %>
+    <% } else { %> 
+        <%- include(role==='Admin' ? 'admin-navbar' : role==='Specialist' ? 'specialist-navbar' : 'patient-navbar' ) %>
+    <% } %>
+
+    <main>
+        
+
+       
+
+       <!-- Hero Section -->
+<section class="hero" data-aos="fade-in">
+    <div class="container">
+        <h1>Your Health, Our Priority</h1>
+        <p>Connecting patients with healthcare providers for seamless medical care and appointment management.</p>
+        <div class="hero-buttons">
+            <a href="/register" class="btn" data-aos="zoom-in">Get Started</a>
+            <a href="/login" class="btn btn-outline" data-aos="zoom-in" data-aos-delay="100">Patient Login</a>
+        </div>
+    </div>
+</section>
+
+<!-- Team Section -->
+<section class="team">
+    <div class="container">
+        <div class="section-title">
+            <h2>Meet Our Team</h2>
+        </div>
+        <div class="team-grid">
+            <div class="team-member" data-aos="fade-right">
+                <img src="/doc1.jpg" alt="Dr. John Doe">
+                <h3>Dr. John Doe</h3>
+                <p>Chief Medical Officer</p>
+            </div>
+            <div class="team-member" data-aos="fade-right" data-aos-delay="200">
+                <img src="/doc2.jpg" alt="Dr. Jane Smith">
+                <h3>Dr. Jane Smith</h3>
+                <p>Head of Pediatrics</p>
+            </div>
+            <div class="team-member" data-aos="fade-right" data-aos-delay="300">
+                <img src="/doc3.jpg" alt="Dr. Michael Brown">
+                <h3>Dr.Brown</h3>
+                <p>Lead Surgeon</p>
+            </div>
+            <div class="team-member" data-aos="fade-right" data-aos-delay="400">
+                <img src="/doc4.jpg" alt="Dr. Lisa Green">
+                <h3>Dr. Lisa Green</h3>
+                <p>Orthopedic Surgeon</p>
+            </div>
+            <div class="team-member" data-aos="fade-right" data-aos-delay="500">
+                <img src="/doc5.jpg" alt="Dr. David Wilson">
+                <h3>Dr. David </h3>
+                <p>Cardiologist</p>
+            </div>
+            <div class="team-member" data-aos="fade-right" data-aos-delay="600">
+                <img src="/doc 6.jpg" alt="Dr. Anna Black">
+                <h3>Dr. Anna Black</h3>
+                <p>Dermatologist</p>
+            </div>
+            <div class="team-member" data-aos="fade-right" data-aos-delay="700">
+                <img src="/doc7.jpg" alt="Dr. Chris White">
+                <h3>Dr. Chris White</h3>
+                <p>Endocrinologist</p>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Features Section -->
+<section class="features">
+    <div class="container">
+        <div class="section-title" data-aos="fade-up">
+            <h2>Our Services</h2>
+            <p>Comprehensive healthcare solutions tailored to your needs</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card" data-aos="fade-up">
+                <div class="feature-icon">📅</div>
+            <h3>Online Appointments</h3>
+                <p>Book appointments with specialists at your convenience</p><br>  
+                 <a href="/appointments/new" class="btn">Book Now</a>
+
+            </div>
+            <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="feature-icon">💬</div>
+                <h3>Secure Messaging</h3>
+                <p>Communicate directly with your healthcare providers</p><br>
+                <a href="/appointments/new" class="btn">Book Now</a>
+            </div>
+            <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="feature-icon">📊</div>
+                <h3>Health Records</h3>
+                <p>Access your medical history and test results online</p><br>
+                <a href="/appointments/new" class="btn">Book Now</a>
+            </div>
+          
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials Section -->
+<section class="patient-reviews" data-aos="fade-up">
+    <div class="container">
+        <div class="section-title">
+            <h2>Hear From Our Valued Patients</h2>
+        </div>
+        <div class="testimonial-card" data-aos="fade-left">
+            <p>"The level of care and attention I received from CareConnect was phenomenal! I felt supported throughout the entire process."</p>
+            <p><strong>- Michael Anderson</strong></p>
+        </div>
+        <div class="testimonial-card" data-aos="fade-left">
+            <p>"I love how easy it was to schedule my appointments online. CareConnect truly puts the patient first!"</p>
+            <p><strong>- Emily Roberts</strong></p>
+        </div>
+        <div class="testimonial-card" data-aos="fade-left">
+            <p>"Thanks to CareConnect, I can manage my health more effectively. The reminders for medications and appointments are a lifesaver!"</p>
+            <p><strong>- David Martinez</strong></p>
+        </div>
+        <div class="testimonial-card" data-aos="fade-left">
+            <p>"The staff at CareConnect is always friendly and knowledgeable. I always leave feeling valued and well taken care of."</p>
+            <p><strong>- Jessica Lee</strong></p>
+        </div>
+        <div class="testimonial-card" data-aos="fade-left">
+            <p>"CareConnect has transformed my healthcare experience. The telehealth options are a game changer for busy individuals like me!"</p>
+            <p><strong>- Robert Wilson</strong></p>
+        </div>
+    </div>
+</section>
+
+    </main>
+    <%- include('footer') %>
+
+    <!-- AOS Library for Animations -->
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000, // Animation duration
+            once: true, // Whether animation should happen only once
+        });
+    </script>
+</body>
+</html>

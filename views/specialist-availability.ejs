@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Messages</title>
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+</head>
+<body>
+    <% if (!role) { %>
+        <%- include('home-navbar') %>
+            <% } else { %>
+                <%- include(role==='Admin' ? 'admin-navbar' : role==='Specialist' ? 'specialist-navbar'
+                    : 'patient-navbar' ) %>
+                    <% } %>
+
+    <% if (successMessage.length > 0) { %>
+        <div class="alert alert-success">
+            <span class="alert-icon">✔️</span>
+            <%= successMessage %>
+        </div>
+    <% } %>
+
+    <% if (errorMessage.length > 0) { %>
+        <div class="alert alert-danger">
+            <span class="alert-icon">❌</span>
+            <%= errorMessage %>
+        </div>
+    <% } %>
+
+    <div class="specialist-availability-container">
+        <div class="your-availability-container">
+            <h1>Set Your Availability</h1>
+            <form action="/specialist/availability" method="POST" class="availability-form">
+                <label for="date">Date:</label>
+                <input type="date" name="date" required id="availabilityDate" value="<%= selectedDate %>">
+                <br>
+                <label for="timeSlot">Select 45-Minute Slot:</label>
+                <select name="timeSlot" id="timeSlot" required>
+                    <option value="">Select a time slot</option>
+                </select>
+                <br>
+                <button type="submit">Set Availability</button>
+            </form>
+        </div>
+
+        <div class="current-availability-container">
+            <h2>Current Availability for <%= selectedDate %></h2>
+            <% if (availabilityList.length > 0) { %>
+                <ul class="availability-list">
+                    <% availabilityList.forEach(avail => { %>
+                        <li>Available from <%= avail.availableFrom.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) %> to <%= avail.availableTo.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) %></li>
+                    <% }) %>
+                </ul>
+            <% } else { %>
+                <p>No availability set for this date.</p>
+            <% } %>
+        </div>
+    </div>
+
+    <script>
+        const timeSlotSelect = document.getElementById("timeSlot");
+        const availabilityDateInput = document.getElementById("availabilityDate");
+
+        function generateTimeSlots() {
+            const baseHour = 9; // 9 AM
+            const endHour = 17; // 5 PM
+            const durationInMinutes = 45;
+            const slots = [];
+
+            for (let hour = baseHour; hour < endHour; hour++) {
+                const startTime = new Date(availabilityDateInput.value);
+                startTime.setHours(hour, 0);
+                const endTime = new Date(startTime);
+                endTime.setMinutes(endTime.getMinutes() + durationInMinutes);
+
+                if (endTime.getHours() < endHour) {
+                    slots.push({
+                        start: startTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+                        end: endTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+                    });
+                }
+            }
+
+            // Clear existing options
+            timeSlotSelect.innerHTML = '<option value="">Select a time slot</option>';
+
+            // Populate dropdown with options
+            slots.forEach(slot => {
+                const option = document.createElement("option");
+                option.value = `${slot.start} - ${slot.end}`;
+                option.textContent = `${slot.start} - ${slot.end}`;
+                timeSlotSelect.appendChild(option);
+            });
+        }
+
+        // Initialize Flatpickr for setting availability
+        flatpickr("#availabilityDate", {
+            dateFormat: "Y-m-d",
+            minDate: "today",
+            onChange: function(selectedDates, dateStr) {
+                generateTimeSlots();
+                // Automatically submit the form to update availability for the selected date
+                document.querySelector('.availability-form').submit();
+            }
+        });
+
+        // Generate initial time slots
+        generateTimeSlots();
+    </script>
+
+<%- include('footer') %>
+</body>
+</html>

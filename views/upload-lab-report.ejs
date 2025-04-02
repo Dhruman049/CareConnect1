@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Lab Report</title>
+    <link rel="stylesheet" href="/styles.css"> 
+     <style>
+        /* public/upload-report.css */
+
+     </style>
+</head>
+<body class="upload-page"> <!-- Add the upload-page class -->
+    <% if (!role) { %>
+        <%- include('home-navbar') %>
+            <% } else { %>
+                <%- include(role === 'Admin' ? 'admin-navbar' : role === 'Specialist' ? 'specialist-navbar' : 'patient-navbar') %>
+                    <% } %>
+
+    
+
+    <% if (successMessage.length > 0) { %>
+        <div class="alert alert-success">
+            <span class="alert-icon">✔️</span>
+            <%= successMessage %>
+        </div>
+    <% } %>
+
+    <% if (errorMessage.length > 0) { %>
+        <div class="alert alert-danger">
+            <span class="alert-icon">❌</span>
+            <%= errorMessage %>
+        </div>
+    <% } %>
+    <div class="upload-report-container">
+        <h1>Upload Lab Report</h1>
+
+        
+
+        <form action="/specialist/upload-lab-report" method="POST" enctype="multipart/form-data">
+            <label for="userId">Select Patient:</label>
+            <select name="userId" required>
+                <% patients.forEach(patient => { %>
+                    <option value="<%= patient._id %>"><%= patient.user_FirstName %> <%= patient.user_LastName %></option>
+                <% }) %>
+            </select>
+        
+            <label for="labReportFile">Upload Lab Report:</label>
+            <div class="file-upload-wrapper">
+                <label class="file-upload-label">
+                    Choose File
+                    <input type="file" name="labReportFile" class="file-upload-input" accept=".pdf,.jpeg,.jpg,.png" required>
+                </label>
+                <span class="file-name ">No file chosen</span>
+            </div>
+        
+            <label for="notes">Notes:</label>
+            <textarea name="notes"></textarea>
+        
+            <button type="submit">Upload Lab Report</button>
+        </form>
+    </div>
+    <script>
+        document.querySelector('.file-upload-input').addEventListener('change', function(event) {
+            const fileNameElement = document.querySelector('.file-name');
+            const fileName = event.target.files[0] ? event.target.files[0].name : 'No file chosen';
+            fileNameElement.textContent = fileName;
+        });
+    </script>
+<%- include('footer') %>
+</body>
+</html>

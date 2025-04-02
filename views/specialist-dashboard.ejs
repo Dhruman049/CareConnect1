@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Specialist Dashboard</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <% if (!role) { %>
+        <%- include('home-navbar') %>
+            <% } else { %>
+                <%- include(role === 'Admin' ? 'admin-navbar' : role === 'Specialist' ? 'specialist-navbar' : 'patient-navbar') %>
+                    <% } %>
+    
+
+    <!-- Dashboard Container -->
+    <div class="dashboard-container">
+        <h1>Welcome to Your Specialist Dashboard!</h1>
+        <p class="user-role">Hey Your role is:  <strong> <%= role %></strong></p>
+       
+        
+        <div class="dashboard-cards">
+            <div class="dashboard-card">
+                <h2>My Patients</h2>
+                <p>View and manage your patients' information and appointments.</p>
+                <a href="/manage-patients" class="btn">Manage Patients</a>
+            </div>
+            <div class="dashboard-card">
+                <h2>Reports</h2>
+                <p>Access and review lab reports submitted by your patients.</p>
+                <a href="/specialist/view-patients-reports" class="btn">View Reports</a>
+            </div>
+            <div class="dashboard-card">
+                <h2>My Appointments</h2>
+                <p>View and manage your scheduled appointments with patients.</p>
+                <a href="/specialist/bookings" class="btn">Manage Appointments</a>
+            </div>
+            <div class="dashboard-card">
+                <h2>My Availability</h2>
+                <p>Set and manage your availability for patient consultations.</p>
+                <a href="/specialist/availability" class="btn">Set Availability</a>
+            </div>
+            <div class="dashboard-card">
+                <h2>My Messages</h2>
+                <p>Check your messages and communicate with your patients.</p>
+                <a href="/specialist/messages" class="btn">View Messages</a>
+            </div>
+            <div class="dashboard-card">
+                <h2>Notifications</h2>
+                <p>Stay updated with notifications regarding your patients and appointments.</p>
+                <a href="/specialist/notifications/<%= loggedInSpecialistId %>" class="btn">View Notifications</a>
+            </div>
+    </div>
+</div>
+    <%- include('footer') %>
+</body>
+</html>
+

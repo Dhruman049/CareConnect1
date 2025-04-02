@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="/styles.css"> 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <style>
+       
+      </style>
+</head>
+<body>
+
+        <% if (!role) { %>
+            <%- include('home-navbar') %>
+                <% } else { %>
+                    <%- include(role==='Admin' ? 'admin-navbar' : role==='Specialist' ? 'specialist-navbar'
+                        : 'patient-navbar' ) %>
+                        <% } %>
+ 
+    <% if (successMessage.length > 0) { %>
+        <div class="alert alert-success">
+            <span class="alert-icon">✔️</span>
+            <%= successMessage %>
+        </div>
+    <% } %>
+
+    <% if (errorMessage.length > 0) { %>
+        <div class="alert alert-danger">
+            <span class="alert-icon">❌</span>
+            <%= errorMessage %>
+        </div>
+    <% } %>
+
+    <div class="register-container">
+        <h1>Register</h1>
+       
+        <form action="/register" method="POST" id="registrationForm">
+            <label for="firstName">First Name:</label>
+            <input type="text" name="firstName" >
+
+            <label for="lastName">Last Name:</label>
+            <input type="text" name="lastName" >
+
+            <label for="email">Email:</label>
+            <input type="email" name="email" >
+
+            <label for="address">Address:</label>
+            <input type="text" name="address" >
+
+            <label for="password">Password:</label>
+            <input type="password" name="password" >
+
+            <label for="phoneNo">Phone Number:</label>
+            <input type="text" name="phoneNo">
+
+            <label for="dob">Date of Birth:</label>
+            <input type="text" id="dob" name="dob" required readonly>
+            <span id="dobError" class="error"></span>
+
+            <!-- User Role (hidden field) -->
+            <input type="hidden" name="role" value="Patient">
+            <input type="hidden" name="specialistType" value="General Practitioner"> 
+            <input type="hidden" name="specialistId" value="">
+
+            <button type="submit">Register</button>
+        </form>
+        <p>Already have an account? <a href="/login">Login here</a></p>
+    </div>
+
+
+         <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const today = new Date();
+            const maxDOB = new Date(today.getFullYear() - 120, today.getMonth(), today.getDate());
+
+            // Initialize flatpickr for the date of birth input field
+            flatpickr("#dob", {
+                maxDate: today,  // Disallow future dates
+                minDate: maxDOB, // Only allow dates up to 120 years ago
+                dateFormat: "Y-m-d", // Format for displaying the date
+                allowInput: false   // Disable manual input to ensure user selects from the picker
+            });
+
+            // Additional client-side validation before form submission
+            document.getElementById("registrationForm").addEventListener("submit", function(event) {
+                const dobInput = document.getElementById("dob");
+                const dobError = document.getElementById("dobError");
+                dobError.textContent = ""; // Clear previous error messages
+
+                const selectedDate = new Date(dobInput.value);
+                if (selectedDate > today || selectedDate < maxDOB) {
+                    dobError.textContent = "Please enter a valid date of birth.";
+                    event.preventDefault(); // Prevent form submission
+                }
+            });
+        });
+    </script>
+      <%- include('footer') %>
+</body>
+</html>
+

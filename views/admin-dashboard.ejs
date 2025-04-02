@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles.css"> 
+    <title>Admin Dashboard</title>
+</head>
+<body>
+    <% if (!role) { %>
+        <%- include('home-navbar') %>
+    <% } else { %> 
+        <%- include(role==='Admin' ? 'admin-navbar' : role==='Specialist' ? 'specialist-navbar' : 'patient-navbar' ) %>
+        <% } %>    
+    <div class="manage-appointments-container">
+        <h1>Admin Dashboard</h1>
+        
+        <!-- Display success message -->
+        <% if (successMessage.length > 0) { %>
+            <div class="alert alert-success">
+                <span class="alert-icon">✔️</span>
+                <%= successMessage[0] %> <!-- Display the first success message -->
+            </div>
+        <% } %>
+        
+        <!-- Display error message -->
+        <% if (errorMessage.length > 0) { %>
+            <div class="alert alert-danger">
+                <span class="alert-icon">❌</span>
+                <%= errorMessage[0] %> <!-- Display the first error message -->
+            </div>
+        <% } %>
+
+        <!-- Your appointments table -->
+        <table>
+            <thead>
+                <tr>
+                    <th>Patient Name</th>
+                    <th>Specialist Name</th>
+                    <th>Appointment Date</th>
+                    <th>Confirmation Status</th>
+                    <th>Appointment Status</th> <!-- New column for Appointment Status -->
+                    <th colspan="3">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% appointments.forEach(appointment => { %>
+                    <tr>
+                        <td>
+                            <%= appointment.patientId ? (appointment.patientId.user_FirstName + ' ' + appointment.patientId.user_LastName) : 'Unknown Patient' %>
+                        </td>
+                        <td>
+                            <%= appointment.specialistId ? (appointment.specialistId.user_FirstName + ' ' + appointment.specialistId.user_LastName) : 'Unknown Specialist' %>
+                        </td>
+                        <td>
+                            <%= appointment.Appointments_date ? appointment.Appointments_date.toLocaleString() : 'Unknown Date' %>
+                        </td>
+                        <td>
+                            <%= appointment.Appointments_confirmation ? appointment.Appointments_confirmation : 'N/A' %>
+                        </td>
+                        <td>
+                            <%= appointment.Appointments_status ? appointment.Appointments_status : 'N/A' %> <!-- Display Appointment Status -->
+                        </td>
+                        
+                        <td>
+                            <form action="/admin/appointments/<%= appointment._id %>" method="POST">
+                                <select name="status" required>
+                                    <option value="Pending" <%= appointment.Appointments_confirmation === 'Pending' ? 'selected' : '' %>>Pending</option>
+                                    <option value="Confirmed" <%= appointment.Appointments_confirmation === 'Confirmed' ? 'selected' : '' %>>Confirmed</option>
+                                    <option value="Canceled" <%= appointment.Appointments_confirmation === 'Canceled' ? 'selected' : '' %>>Canceled</option>
+                                </select>
+                            </td>
+                            <td>
+                                <button type="submit">Update Appointment</button>
+                            </form>
+                        </td>
+                        
+                        <td>
+                            <form action="/admin/appointments/<%= appointment._id %>/delete" method="POST" onsubmit="return confirm('Are you sure you want to delete this appointment?');">
+                                <button type="submit">Delete</button>
+                            </form>               
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </div>
+    <%- include('footer') %>
+</body>
+</html>

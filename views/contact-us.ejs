@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles.css">
+    <title>Contact Us</title>
+</head>
+<body>
+    <% if (!role) { %>
+        <%- include('home-navbar') %>
+    <% } else { %> 
+        <%- include(role==='Admin' ? 'admin-navbar' : role==='Specialist' ? 'specialist-navbar' : 'patient-navbar' ) %>
+        <% } %>
+
+        <% if (successMessage.length > 0) { %>
+            <div class="alert alert-success">
+                <span class="alert-icon">✔️</span>
+                <%= successMessage[0] %>
+            </div>
+        <% } %>
+    
+        <% if (errorMessage.length > 0) { %>
+            <div class="alert alert-danger">
+                <span class="alert-icon">❌</span>
+                <%= errorMessage[0] %>
+            </div>
+        <% } %>
+    <div class="contact-container">
+        <h1>Contact Us</h1>
+        <form action="/contact-us" method="POST" class="contact-form">
+            <div class="form-group">
+                <label for="name">Your Name:</label>
+                <input type="text" id="name" name="name" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Your Email:</label>
+                <input type="email" id="email" name="email" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Your Message:</label>
+                <textarea id="message" name="message" class="form-control" rows="5" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Send Message</button>
+        </form>
+
+        <h2>Our Contact Information</h2>
+        <p>If you have any questions or concerns, feel free to reach out to us:</p>
+        <ul>
+            <li><strong>Email:</strong> Dsavaliya3089@conectogac.on.ca</li>
+            <li><strong>Phone:</strong> +1-437-214-7572</li>
+            <li><strong>Address:</strong> 108 University Ave E, Waterloo, ON N2J 2W2</li>
+        </ul>
+    </div>
+
+    <%- include('footer') %>
+</body>
+</html>

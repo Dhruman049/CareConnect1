@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles.css">
+    <title>Patient Medical History</title>
+</head>
+<body>
+    
+   <!-- Include the appropriate navigation bar -->
+   <% if (!role) { %>
+    <%- include('home-navbar') %>
+<% } else { %> 
+    <%- include(role==='Admin' ? 'admin-navbar' : role==='Specialist' ? 'specialist-navbar' : 'patient-navbar' ) %>
+    <% } %>
+    
+   <h1>Patient Medical History</h1>
+
+   <% if (successMessage.length) { %>
+       <div class="alert alert-success"><%= successMessage %></div>
+   <% } %>
+   <% if (errorMessage.length) { %>
+       <div class="alert alert-danger"><%= errorMessage %></div>
+   <% } %>
+
+   <% if (medicalHistory) { %>
+       <h2>Medical History</h2>
+       <p><strong>History:</strong> <%= medicalHistory.PatientRecord_medical_history %></p>
+       <p><strong>Emergency Contact:</strong> <%= medicalHistory.PatientRecord_emergency_contact %></p>
+   <% } else { %>
+       <p>No medical history available for this patient.</p>
+   <% } %>
+
+   <% if (role === 'Patient' && loggedInUserId === medicalHistory.user_id.toString()) { %>
+       <h2>Update Medical History</h2>
+       <form action="/patient/<%= medicalHistory.user_id %>/medical-history" method="POST">
+           <label for="medicalHistory">Medical History:</label><br>
+           <textarea name="medicalHistory" id="medicalHistory" rows="4" cols="50"><%= medicalHistory ? medicalHistory.PatientRecord_medical_history : '' %></textarea><br><br>
+
+           <label for="emergencyContact">Emergency Contact:</label><br>
+           <input type="text" name="emergencyContact" id="emergencyContact" value="<%= medicalHistory ? medicalHistory.PatientRecord_emergency_contact : '' %>"><br><br>
+
+           <button type="submit">Save</button>
+       </form>
+   <% } %>
+
+   <a href="<%= role === 'Specialist' ? '/specialist/dashboard' : '/dashboard' %>">Back to Dashboard</a>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<header>
+    <div class="container">
+        <div class="header-content">
+            <div class="logo">
+                <div class="logo-text">Care<span>Connect</span></div>
+            </div>
+            <nav>
+                <ul class="nav-items">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/specialist/dashboard">Dashboard</a></li>
+                    <li><a href="/manage-patients">My Patients</a></li>
+                    
+                        <li><a href="/specialist/upload-lab-report">Upload Lab Report</a></li>
+                        
+                
+                    <li><a href="/specialist/bookings">My Appointment</a></li>
+                    <li><a href="/specialist/availability">My Availability</a></li>
+                    <li>
+                        <a href="/specialist/messages">My Messages</a>
+                        <ul class="dropdown" style=" list-style: none;">
+                            <li><a href="/specialist/send-message">Send Message</a></li>
+                         
+                        </ul>
+                    </li>
+                   
+                    <li><a href="/specialist/notifications/<%= loggedInSpecialistId %>">Notifications</a></li>
+                </ul>
+                <ul class="nav-login">
+                    <li >
+                        <form action="/logout" method="POST" >
+                            <button type="submit" class="logout-button">Logout</button>
+                        </form>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Patients</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <% if (!role) { %>
+        <%- include('home-navbar') %>
+    <% } else { %> 
+        <%- include(role === 'Admin' ? 'admin-navbar' : role === 'Specialist' ? 'specialist-navbar' : 'patient-navbar', { loggedInSpecialistId }) %>
+
+        <% } %>
+    <div class="manage-patients-container">
+        <h1>Manage Patients</h1>
+
+        <% if(patients && patients.length > 0) { %>
+            <table class="patients-table">
+                <thead>
+                    <tr>
+                        <th>Patient Name</th>
+                        <th>Contact</th>
+                        <th>Lab Reports & Notes</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% patients.forEach(patient => { %>
+                        <tr>
+                            <td><%= patient.user_FirstName + ' ' + patient.user_LastName %></td>
+                            <td><%= patient.user_PhoneNo || 'Not provided' %></td>
+                            <td>
+                                <% const reports = labReports.filter(report => report.user_id && report.user_id.equals(patient._id)); %>
+                                <% if(reports.length > 0) { %>
+                                    <ul style=" list-style: none;">
+                                        <% reports.forEach(report => { %>
+                                            <li>
+                                                <a href="<%= report.LabReports_File %>" target="_blank" class="view-details-link">View Report </a>
+                                                - <%= report.LabReports_Notes || 'No additional notes' %>
+                                            </li>
+                                        <% }); %>
+                                    </ul>
+                                <% } else { %>
+                                    No lab reports available.
+                                <% } %>
+                            </td>
+                            <td>
+                                <a href="/specialist/patient/<%= patient._id %>/details" class="view-details-link">View Details</a>
+                            </td>
+                        </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+        <% } else { %>
+            <p>No patients assigned to you.</p>
+        <% } %>
+    </div>
+
+    <%- include('footer') %>
+</body>
+</html>

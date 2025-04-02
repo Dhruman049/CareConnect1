@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles.css">
+    <title>Edit User</title>
+</head>
+<body>
+    <% if (!role) { %>
+        <%- include('home-navbar') %>
+    <% } else { %> 
+        <%- include(role==='Admin' ? 'admin-navbar' : role==='Specialist' ? 'specialist-navbar' : 'patient-navbar' ) %>
+        <% } %>
+            <% if (successMessage.length > 0) { %>
+        <div class="alert alert-success">
+            <span class="alert-icon">✔️</span>
+            <%= successMessage[0] %>
+        </div>
+    <% } %>
+
+    <% if (errorMessage.length > 0) { %>
+        <div class="alert alert-danger">
+            <span class="alert-icon">❌</span>
+            <%= errorMessage[0] %>
+        </div>
+    <% } %>
+    <div class="edit-user-container">
+        <h1>Edit User</h1>
+    
+        <form class="edit-user-form" action="/admin/users/edit/<%= user._id %>" method="POST">
+            <div class="form-group">
+                <label for="firstName">First Name:</label>
+                <input type="text" id="firstName" name="firstName" value="<%= user.user_FirstName %>" required>
+            </div>
+
+            <div class="form-group">
+                <label for="lastName">Last Name:</label>
+                <input type="text" id="lastName" name="lastName" value="<%= user.user_LastName %>" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" value="<%= user.user_Email %>" required>
+            </div>
+
+            <div class="form-group">
+                <label for="address">Address:</label>
+                <input type="text" id="address" name="address" value="<%= user.user_Address %>">
+            </div>
+
+            <div class="form-group">
+                <label for="phoneNo">Phone No:</label>
+                <input type="text" id="phoneNo" name="phoneNo" value="<%= user.user_PhoneNo %>">
+            </div>
+
+            <div class="form-group">
+                <label for="dob">Date of Birth:</label>
+                <input type="date" id="dob" name="dob" value="<%= user.user_DOB.toISOString().split('T')[0] %>">
+            </div>
+
+            <div class="form-group">
+                <label for="role">Role:</label>
+                <select id="role" name="role" required>
+                    <option value="Patient" <%= user.user_Role === 'Patient' ? 'selected' : '' %>>Patient</option>
+                    <option value="Specialist" <%= user.user_Role === 'Specialist' ? 'selected' : '' %>>Specialist</option>
+                    <option value="Admin" <%= user.user_Role === 'Admin' ? 'selected' : '' %>>Admin</option>
+                </select>
+            </div>
+        
+            <div class="form-group">
+                <label for="specialistTypeSelect">Specialist Type:</label>
+                <select id="specialistType" name="specialistType" required>
+                    <option value="None" <%= user.specialistType === 'None' ? 'selected' : '' %>>None</option>
+                    <option value="Cardiologist" <%= user.specialistType === 'Cardiologist' ? 'selected' : '' %>>Cardiologist</option>
+                    <option value="Dermatologist" <%= user.specialistType === 'Dermatologist' ? 'selected' : '' %>>Dermatologist</option>
+                    <option value="Neurologist" <%= user.specialistType === 'Neurologist' ? 'selected' : '' %>>Neurologist</option>
+                    <option value="Pediatrician" <%= user.specialistType === 'Pediatrician' ? 'selected' : '' %>>Pediatrician</option>
+                    <option value="General Practitioner" <%= user.specialistType === 'General Practitioner' ? 'selected' : '' %>>General Practitioner</option>
+                    <option value="Surgeon" <%= user.specialistType === 'Surgeon' ? 'selected' : '' %>>Surgeon</option>
+                    <option value="Orthopedist" <%= user.specialistType === 'Orthopedist' ? 'selected' : '' %>>Orthopedist</option>
+                    <option value="Psychiatrist" <%= user.specialistType === 'Psychiatrist' ? 'selected' : '' %>>Psychiatrist</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Update User</button>
+            </div>
+        </form>
+        <a href="/admin/users" class="btn btn-secondary">Back to Users</a>
+    </div>
+    <%- include('footer') %>s
+</body>
+</html>

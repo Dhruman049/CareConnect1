@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <title>Book Appointment</title>
+</head>
+<body>
+    <% if (!role) { %>
+        <%- include('home-navbar') %>
+    <% } else { %> 
+        <%- include(role==='Admin' ? 'admin-navbar' : role==='Specialist' ? 'specialist-navbar' : 'patient-navbar' ) %>
+        <% } %>
+        
+        <% if (successMessage.length > 0) { %>
+        <div class="alert alert-success">
+            <span class="alert-icon">✔️</span>
+            <%= successMessage %>
+        </div>
+    <% } %>
+
+    <% if (errorMessage.length > 0) { %>
+        <div class="alert alert-danger">
+            <span class="alert-icon">❌</span>
+            <%= errorMessage %>
+        </div>
+    <% } %>
+    <div class="booking-container">
+       
+
+        <h1>Available Appointment Slots</h1>
+      
+        <form id="appointmentForm" action="/appointments" method="POST">
+            <label for="specialistId">Select Specialist:</label>
+            <select name="specialistId" id="specialistId" >
+                <% specialists.forEach(specialist=> { %>
+                    <option value="<%= specialist._id %>">
+                        <%= specialist.user_FirstName %> <%= specialist.user_LastName %>
+                    </option>
+                <% }); %>
+            </select>
+            <label for="specialistId">Specialist Type:</label>
+            <select name="specialistId" id="specialistId"  disabled>
+                <% specialists.forEach(specialist=> { %>
+                    <option value="<%= specialist._id %>" >
+                        <%= specialist.user_SpecialistType %> 
+                    </option>
+                <% }); %>
+            </select>
+
+            <label for="appointmentType">Appointment Type:</label>
+            <select name="appointmentType" id="appointmentType" >
+                <option value="Video Consultation">Video Consultation</option>
+                <option value="In-Person">In-Person</option>
+            </select>
+
+            <label for="notes">Notes:</label>
+            <textarea name="notes" id="notes" rows="4" cols="50"></textarea>
+            
+            <label for="appointmentDate">Select Appointment Date:</label>
+            <input type="text" name="appointmentDate" id="appointmentDate" >
+
+            <h2>Available Time Slots:</h2>
+            <ul id="timeSlotsList"></ul>
+            <input type="hidden" name="time" >
+                         
+            <button type="submit">Book Appointment</button>
+        </form>
+
+        
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script>
+        flatpickr("#appointmentDate", {
+            minDate: "today",
+            dateFormat: "Y-m-d",
+            onChange: function (selectedDates) {
+                if (selectedDates.length) {
+                    const selectedDate = selectedDates[0].toISOString().split('T')[0];
+                    const specialistId = document.getElementById('specialistId').value;
+    
+                    fetch(`/appointments/available-slots/${specialistId}/${selectedDate}`)
+                        .then(response => response.json())
+                        .then(availableSlots => {
+                            const timeSlotsList = document.getElementById('timeSlotsList');
+                            timeSlotsList.innerHTML = ""; // Clear previous slots
+    
+                            availableSlots.forEach(slot => {
+                                const listItem = document.createElement('li');
+                                listItem.className = 'time-slot';
+                                listItem.textContent = `${slot.start} - ${slot.end}`; // Display the time range
+    
+                                // Add click event listener to item
+                                listItem.onclick = function () {
+                                    // Toggle 'selected' class on click
+                                    const selectedSlot = timeSlotsList.querySelector('.selected');
+                                    if (selectedSlot) {
+                                        selectedSlot.classList.remove('selected'); // Remove selection from previously selected
+                                    }
+                                    listItem.classList.add('selected'); // Highlight the currently selected slot
+    
+                                    // Store the selected time value in a hidden input field
+                                    document.querySelector('input[name="time"]').value = slot.start; // Use start time for booking
+                                };
+    
+                                timeSlotsList.appendChild(listItem);
+                            });
+                        })
+                        .catch(error => console.error('Error fetching available slots:', error));
+                }
+            }
+        });
+    </script>
+     <%- include('footer') %>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notification Detail</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+
+<body>
+    <% if (!role) { %>
+        <%- include('home-navbar') %>
+            <% } else { %>
+                <%- include(role==='Admin' ? 'admin-navbar' : role==='Specialist' ? 'specialist-navbar'
+                    : 'patient-navbar' ) %>
+                    <% } %>
+                        <div class="viewdetail-container">
+                            <h1>Notification Detail</h1>
+                            <table class="notification-table">
+                                <thead>
+                                    <tr>
+                                        <th>Notification in Detail</th>
+                                        <th>Information</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>From:</strong></td>
+                                        <td>
+                                            <%= notification.specialist_id ? notification.specialist_id.user_FirstName
+                                                + ' ' + notification.specialist_id.user_LastName : 'N/A' %>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>For:</strong></td>
+                                        <td>
+                                            <%= notification.user_id ? notification.user_id.user_FirstName + ' ' +
+                                                notification.user_id.user_LastName : 'N/A' %>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Type:</strong></td>
+                                        <td>
+                                            <%= notification.notification_type %>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Status:</strong></td>
+                                        <td>
+                                            <%= notification.notification_status %>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Date:</strong></td>
+                                        <td>
+                                            <%= notification.createdAt.toLocaleString() %>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Message Content:</strong></td>
+                                        <td>
+                                            <%= notification.notification_message %>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="back-link">
+                                <a class="view-details-button"
+                                    href="<%= role === 'Specialist' ? `/specialist/notifications/${loggedInSpecialistId}` : `/patient/notifications/${loggedInPatientId}` %>">Back
+                                    to Notifications</a>
+                            </div>
+                        </div>
+                        <%- include('footer') %>
+</body>
+
+</html>

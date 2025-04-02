@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Appointments</title>
+    <link rel="stylesheet" href="/styles.css"> 
+</head>
+<body>
+    <% if (!role) { %>
+        <%- include('home-navbar') %>
+    <% } else { %> 
+        <%- include(role==='Admin' ? 'admin-navbar' : role==='Specialist' ? 'specialist-navbar' : 'patient-navbar' ) %>
+        <% } %>
+            
+    <div class="appointments-container">
+        <h1>Your Appointments</h1>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Specialist</th>
+                    <th>User Name</th>
+                    <th>Availability</th>
+                    <th>Date</th>
+                    <th>Type</th>
+                    <th>Status</th>
+                    <th>Confirmation</th>
+                    <th>Viedo Link</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% appointments.forEach(appointment => { %>
+                    <tr>
+                        <td><%= appointment.specialistId.user_FirstName %> <%= appointment.specialistId.user_LastName %></td>
+                        <td><%= appointment.user_Name %></td>
+                        <td><%= appointment.Appointments_availability %></td>
+                        <td><%= new Date(appointment.Appointments_date).toLocaleString() %></td>
+                        <td><%= appointment.Appointments_type %></td>
+                        <td><%= appointment.Appointments_status %></td>
+                        <td><%= appointment.Appointments_confirmation %></td>
+                        <td>
+                        <% if (appointment.Appointments_confirmation === 'Confirmed' && appointment.Appointments_type === 'Video Consultation') { %>
+                            <strong>Video Link:</strong> <a href="<%= appointment.videoLink %>" target="_blank">Join Video Call</a><br>
+                        <% } %>
+                    </td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+        
+    
+    </div>
+
+    <%- include('footer') %>
+</body>
+</html>

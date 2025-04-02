@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles.css">
+    <title>Your Lab Reports</title>
+</head>
+
+<body>
+    <% if (!role) { %>
+        <%- include('home-navbar') %>
+            <% } else { %>
+                <%- include(role==='Admin' ? 'admin-navbar' : role==='Specialist' ? 'specialist-navbar'
+                    : 'patient-navbar' , { loggedInSpecialistId }) %>
+
+                    <% } %>
+
+
+                        <div class="view-lab-report-container"> <!-- Added container class -->
+                            <h1>Your Lab Reports</h1>
+
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Notes</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% labReports.forEach(report=> { %>
+                                        <tr>
+                                            <td>
+                                                <%= report.LabReports_Notes %>
+                                            </td>
+                                            <td><a href="/<%= report.LabReports_File.split('/').pop() %>"
+                                                    target="_blank" class="view-details-button">View Report</a></td>
+                                        </tr>
+                                        <% }) %>
+                                </tbody>
+                            </table>
+                        </div>
+
+</body>
+
+</html>

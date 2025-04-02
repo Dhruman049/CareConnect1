@@ -1,0 +1,27 @@
+<header>
+    <div class="container">
+        <div class="header-content">
+            <div class="logo">
+                <div class="logo-text">Care<span>Connect</span></div>
+            </div>
+            <nav class="navbar patient-navbar">
+                <ul class="nav-items">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/dashboard">Dashboard</a></li>
+                    <li><a href="/appointments">My Appointments</a></li>
+                    <li><a href="/appointments/new">Book An Appointment</a></li>
+                    <li><a href="/patient/messages">My Messages</a></li>
+                    <li><a href="/patient/lab-reports">My Reports</a></li>
+                    <li><a href="/patient/notifications/<%= loggedInPatientId %>">Notifications</a></li>
+                </ul>
+                <ul class="nav-login">
+                    <li >
+                        <form action="/logout" method="POST" >
+                            <button type="submit" class="logout-button">Logout</button>
+                        </form>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
